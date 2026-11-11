@@ -1,42 +1,100 @@
-const input = document.querySelector('#favchap');
-const addButton = document.querySelector('button[type="submit"]');
-const list = document.querySelector('#list');
+const chapterForm = document.querySelector('#chapter-form');
+const chapterInput = document.querySelector('#favchap');
+const chapterList = document.querySelector('#list');
+const feedback = document.querySelector('#feedback');
 
-const li = document.createElement('li');
+const bookNames = [
+    '1 Nephi',
+    '2 Nephi',
+    'Jacob',
+    'Enos',
+    'Jarom',
+    'Omni',
+    'Words of Mormon',
+    'Mosiah',
+    'Alma',
+    'Helaman',
+    '3 Nephi',
+    '4 Nephi',
+    'Mormon',
+    'Ether',
+    'Moroni'
+];
 
-const deleteButton = document.createElement('button');
+const booksByNormalizedName = new Map(
+    bookNames.map((book) => [book.toLowerCase(), book])
+);
 
-li.textContent = input.value;
+function showFeedback(message) {
+    feedback.textContent = message;
+}
 
-deleteButton.textContent = 'x';
+function parseChapter(value) {
+    const match = value.trim().replace(/\s+/g, ' ').match(/^(.+?)\s+(\d+)$/);
 
-li.append(deleteButton);
-list.append(li);// select elements from the DOM
-const inputElement = document.querySelector("#favchap");
-const buttonElement = document.querySelector("button");
-const listElement = document.querySelector("#list");
-
-// wait for button clicks
-buttonElement.addEventListener("click", function () {
-    // Check if the user entered something
-    if (inputElement.value != "") {
-        // create list item and give it the value of the input
-        const li = document.createElement("li");
-        li.textContent = inputElement.value;
-        // create a button and add a click event listener
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "❌";
-        deleteBtn.addEventListener("click", function () {
-            listElement.removeChild(li);
-            inputElement.focus();
-        });
-        // add the button to the list item
-        li.appendChild(deleteBtn);
-        // OUTPUT: finally display the completed list item to the unordered list
-        listElement.appendChild(li);
-        // clear the user input field
-        inputElement.value = "";
+    if (!match) {
+        return null;
     }
-    // focus the user back to the input field
-    inputElement.focus();
+
+    const book = booksByNormalizedName.get(match[1].toLowerCase());
+    const chapterNumber = Number(match[2]);
+
+    if (!book || !Number.isSafeInteger(chapterNumber) || chapterNumber < 1) {
+        return null;
+    }
+
+    return {
+        book,
+        chapterNumber,
+        label: `${book} ${chapterNumber}`,
+        key: `${book.toLowerCase()}-${chapterNumber}`
+    };
+}
+
+chapterForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const chapter = parseChapter(chapterInput.value);
+
+    if (!chapter) {
+        showFeedback('Enter a Book of Mormon book and a positive chapter number, such as Alma 5.');
+        chapterInput.focus();
+        return;
+    }
+
+    if ([...chapterList.children].some((item) => item.dataset.chapterKey === chapter.key)) {
+        showFeedback(`${chapter.label} is already in your list.`);
+        chapterInput.focus();
+        return;
+    }
+
+    if (chapterList.children.length >= 10) {
+        showFeedback('Your Top 10 list is full. Remove a chapter before adding another.');
+        chapterInput.focus();
+        return;
+    }
+
+    const item = document.createElement('li');
+    item.dataset.chapterKey = chapter.key;
+
+    const chapterName = document.createElement('span');
+    chapterName.textContent = chapter.label;
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.className = 'delete';
+    removeButton.textContent = '×';
+    removeButton.setAttribute('aria-label', `Remove ${chapter.label}`);
+    removeButton.addEventListener('click', () => {
+        item.remove();
+        showFeedback(`${chapter.label} removed from your list.`);
+        chapterInput.focus();
+    });
+
+    item.append(chapterName, removeButton);
+    chapterList.append(item);
+
+    showFeedback(`${chapter.label} added to your list. ${chapterList.children.length} of 10 chapters.`);
+    chapterInput.value = '';
+    chapterInput.focus();
 });

@@ -16,8 +16,8 @@ automatically on the screen. Entries can then be deleted from the list. -->
     <main>
         <section>
             <form id="chapter-form">
-                <label for="favchap">Enter a Book of Mormon book and chapter:</label>
-                <p id="input-help">For example: Alma 5 or 1 Nephi 3.</p>
+                <label for="favchap">Enter Book and Chapter:</label>
+                <p id="input-help" class="visually-hidden">For example: Alma 5 or 1 Nephi 3.</p>
                 <input
                     type="text"
                     id="favchap"
@@ -30,13 +30,13 @@ automatically on the screen. Entries can then be deleted from the list. -->
             </form>
         </section>
         <section>
-            <h2>Your Favorite Chapters</h2>
+            <h2 class="visually-hidden">Your Favorite Chapters</h2>
             <p id="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
             <ul id="list" aria-label="Favorite Book of Mormon chapters"></ul>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Book of Mormon Chapters App</p>
+        <p>Parker Wright</p>
     </footer>
     <script src="scripts/bom.js"></script>
 </body>
