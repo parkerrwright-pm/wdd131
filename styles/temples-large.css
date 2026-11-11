@@ -1,0 +1,16 @@
+@media (min-width: 640px) {
+    nav {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav button#menu-toggle {
+        display: none;
+    }
+
+    nav ul,
+    nav ul.hidden {
+        display: flex;
+        flex-direction: row;
+    }
+}
