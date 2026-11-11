@@ -1,0 +1,39 @@
+:root {
+    /* Color scheme */
+    --primary-color: #253746;       /* Body text, navigation, and footer */
+    --secondary-color: #cf1f39;     /* Section headings, borders, and links */
+    --accent-color: #740e1d;        /* Hover and focus states */
+    --background-color: #f0f0f0;    /* Page background */
+    --card-background: #ffffff;    /* Header and card backgrounds */
+    --text-color: #253746;          /* Body text */
+    --text-light: #ffffff;         /* Text on dark backgrounds */
+    --border-color: #d1d6d8;       /* Borders and last-modified text */
+
+    /* Typography */
+    --heading-font: "Inter", Arial, sans-serif;
+    --body-font: "Inter", Arial, sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    font-weight: 900;
+    line-height: 1.3;
+    text-align: center;
+}
+
+h1 {
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.2rem;
+}

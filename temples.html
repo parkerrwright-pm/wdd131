@@ -11,25 +11,32 @@ Design, develop, test, and deploy a temple album page using your own selection o
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A responsive temple album page with a hamburger menu and interactive features.">
-    <meta name="author" content="Parker Wright">    
-    <title>Temple Album</title>
+    <meta name="author" content="Parker Wright">
+    <title>WDD 131 - Temple Album</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/temples.css">
     <link rel="stylesheet" href="styles/temples-large.css">
     <script src="scripts/temples.js" defer></script>
 </head>
+
 <body>
     <header>
         <h1>Temple Album</h1>
         <nav>
             <button id="menu-toggle">☰</button>
             <ul id="menu" class="hidden">
-                <li><a href="#temple1">Temple 1</a></li>
-                <li><a href="#temple2">Temple 2</a></li>
-                <li><a href="#temple3">Temple 3</a></li>
+                <li><a href="Home">Home</a></li>
+                <li><a href="Old">Old</a></li>
+                <li><a href="New">New</a></li>
+                <li><a href="Large">Large</a></li>
+                <li><a href="Small">Small</a></li>
             </ul>
         </nav>
     </header>
@@ -72,6 +79,10 @@ Design, develop, test, and deploy a temple album page using your own selection o
             <figcaption>Temple 9</figcaption>
         </figure>
     </main>
+    <footer>
+        <p>&copy; <span id="currentyear"></span> Parker Wright | Utah, USA</p>
+        <p id="lastModified"></p>
+    </footer>
 </body>
-<footer>
+
 </html>
