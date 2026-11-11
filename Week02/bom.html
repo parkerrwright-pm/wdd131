@@ -7,31 +7,32 @@ automatically on the screen. Entries can then be deleted from the list. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book of Mormon Chapters</title>
-    <link rel="stylesheet" href="styles/media-query.css">
-    <link rel="stylesheet" href="styles/media-query-large.css">
+    <link rel="stylesheet" href="styles/bom.css">
 </head>
 <body>
     <header>
-    <h1>📖 Book of Mormon - Top 10</h1>
+        <h1>📖 Book of Mormon - Top 10</h1>
     </header>
-    <main>
-        <label for="favchap">Enter Book and Chapter: </label>
-        <input type="text" id="favchap" placeholder="Alma 5">
-        <button type="submit">Add Chapter</button>
-        <ul id="list"></ul>
-    </main>
-    
     <main>
         <section>
             <form id="chapter-form">
-                <label for="chapter">Enter your favorite chapter:</label>
-                <input type="text" id="chapter" name="chapter" required>
+                <label for="favchap">Enter a Book of Mormon book and chapter:</label>
+                <p id="input-help">For example: Alma 5 or 1 Nephi 3.</p>
+                <input
+                    type="text"
+                    id="favchap"
+                    name="chapter"
+                    placeholder="Alma 5"
+                    aria-describedby="input-help"
+                    autocomplete="off"
+                >
                 <button type="submit">Add Chapter</button>
             </form>
         </section>
         <section>
-            <h2>Favorite Chapters</h2>
-            <ul id="chapter-list"></ul>
+            <h2>Your Favorite Chapters</h2>
+            <p id="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+            <ul id="list" aria-label="Favorite Book of Mormon chapters"></ul>
         </section>
     </main>
     <footer>
