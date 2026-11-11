@@ -124,14 +124,3 @@ input:focus-visible {
     font-size: 2rem;
     line-height: 1;
 }
-
-@media (max-width: 360px) {
-    h1 {
-        font-size: 1.65rem;
-    }
-
-    #list {
-        margin-right: 0.5rem;
-        margin-left: 0.5rem;
-    }
-}
