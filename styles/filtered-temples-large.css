@@ -1,0 +1,21 @@
+@media (min-width: 640px) {
+    nav {
+        flex-direction: row;
+    }
+
+    nav button#menu-toggle {
+        display: none;
+    }
+
+    nav ul,
+    nav ul.hidden {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    main {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+}
