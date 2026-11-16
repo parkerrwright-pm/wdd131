@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #253746;
+    --secondary-color: #cf1f39;
+    --accent-color: #006847;
+    --background-color: #f0f0f0;
+    --card-background: #ffffff;
+    --text-color: #253746;
+    --text-light: #ffffff;
+    --border-color: #d1d6d8;
+    --heading-font: "Inter", Arial, sans-serif;
+    --body-font: "Inter", Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+header,
+footer,
+h2 {
+    text-align: center;
+}
+
+header {
+    padding: 1.5rem 1rem;
+    border-top: 5px solid var(--secondary-color);
+    border-bottom: 8px solid var(--accent-color);
+    background-color: var(--card-background);
+}
+
+h1,
+h2 {
+    margin: 0;
+    font-family: var(--heading-font);
+    font-weight: 900;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.02em;
+}
+
+.hero,
+.hero img {
+    display: block;
+    width: 100%;
+}
+
+.hero img {
+    height: auto;
+    aspect-ratio: 1 / 1.05;
+    object-fit: cover;
+}
+
+.card {
+    margin: 1rem;
+    padding: 1.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--card-background);
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.4rem 1rem;
+    max-width: 24rem;
+    margin: 1rem auto 0;
+}
+
+dt {
+    text-align: right;
+    font-weight: 700;
+}
+
+dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.weather-icon {
+    display: block;
+    margin: 1rem auto;
+}
+
+.weather-note {
+    margin: 1rem 0 0;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+footer {
+    padding: 1rem;
+    border-top: 5px solid var(--secondary-color);
+    color: var(--text-light);
+    background-color: var(--primary-color);
+}
+
+footer p {
+    margin: 0;
+}
+
+#lastModified {
+    color: var(--border-color);
+    font-size: 0.9rem;
+}
+
+@media (min-width: 800px) {
+    main {
+        position: relative;
+    }
+
+    .hero img {
+        height: clamp(38rem, 60vw, 50rem);
+        aspect-ratio: auto;
+    }
+
+    .card {
+        position: absolute;
+        width: 20rem;
+        margin: 0;
+        padding: 1rem;
+        box-shadow: 0 4px 16px #0003;
+    }
+
+    .data {
+        top: 2rem;
+        left: 2rem;
+    }
+
+    .weather {
+        right: 2rem;
+        bottom: 2rem;
+    }
+
+    .card h2 {
+        padding: 0.75rem;
+        color: var(--text-light);
+        background-color: var(--accent-color);
+    }
+
+    .weather h2 {
+        background-color: var(--secondary-color);
+    }
+
+    .weather h2::after {
+        content: " ⛅";
+        margin-left: 0.5rem;
+    }
+
+    .weather-icon {
+        display: none;
+    }
+}

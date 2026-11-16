@@ -1,42 +1,72 @@
-<!-- Apply the concepts from the learning activities to the design and development of a web page. The subject of the page is
-a country or place where you live, have visited, or wish to visit. There are specific functional and developmental
-requirements for the page's layout, design, and content. 
--->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Information about Mexico City, Mexico.">
-    <meta name="author" content="Parker Wright">    
-    <link rel="stylesheet" href="styles/place.css">    
+    <meta name="description" content="Explore Mexico City, Mexico, with city facts, a view of the Basilica of Guadalupe, and a sample weather report.">
+    <meta name="author" content="Parker Wright">
+    <title>Mexico City, Mexico | WDD 131</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/place.css">
+    <script src="scripts/getdates.js" defer></script>
     <script src="scripts/place.js" defer></script>
-    <title>Place</title>
 </head>
+
 <body>
-    <section class="hero">
-        <h1>Welcome to Mexico City</h1>        
-        <picture>
-            <source srcset="images/mexico-city-bacilica-de-guadalupe.webp" media="(min-width: 800px)" type="image/webp">
-            /Users/parkerwright/Documents/BYUPathways/Web and Computer Programming/WDD 131 Dynamic Web
-            Fundamentals/wdd131/images/Mexico-City-Bacilica-de-Guadalupe-large.webp
-            /Users/parkerwright/Documents/BYUPathways/Web and Computer Programming/WDD 131 Dynamic Web
-            Fundamentals/wdd131/images/Mexico-City-Bacilica-de-Guadalupe-small.webp
+    <header>
+        <h1>Mexico City</h1>
+    </header>
+
+    <main>
+        <picture class="hero">
             <source srcset="images/Mexico-City-Bacilica-de-Guadalupe-large.webp" media="(min-width: 800px)" type="image/webp">
-            <img src="images/mexico-city-bacilica-de-guadalupe.webp" alt="Mexico City skyline">
+            <img src="images/Mexico-City-Bacilica-de-Guadalupe-small.webp"
+                alt="Domes of the Basilica of Guadalupe overlooking Mexico City's skyline and mountains"
+                width="500" height="332" fetchpriority="high">
         </picture>
-        <p>Discover the vibrant culture, history, and attractions of Mexico's capital city.</p>
-    </section>
-    <section class="weather">
-        <h2>🌤️ Weather in Mexico City</h2>
-        <p>Temperature: 25°C</p>
-        <p>Condition: Sunny</p>
-    </section>
+
+        <section class="data card" aria-labelledby="data-heading">
+            <h2 id="data-heading">Data</h2>
+            <dl>
+                <dt>Country:</dt>
+                <dd>Mexico</dd>
+                <dt>Area:</dt>
+                <dd>1,495 km²</dd>
+                <dt>Population:</dt>
+                <dd>9,209,944 (2020)</dd>
+                <dt>Elevation:</dt>
+                <dd>2,240 m</dd>
+                <dt>Language:</dt>
+                <dd>Spanish</dd>
+                <dt>Currency:</dt>
+                <dd>Mexican peso (MXN)</dd>
+            </dl>
+        </section>
+
+        <section class="weather card" aria-labelledby="weather-heading">
+            <h2 id="weather-heading">Weather</h2>
+            <img class="weather-icon" src="images/Weather.svg" alt="" width="64" height="64">
+            <dl>
+                <dt>Temperature:</dt>
+                <dd id="temperature">8 °C</dd>
+                <dt>Conditions:</dt>
+                <dd>Partly cloudy</dd>
+                <dt>Wind:</dt>
+                <dd id="wind-speed">12 km/h</dd>
+                <dt>Wind chill:</dt>
+                <dd id="wind-chill">N/A</dd>
+            </dl>
+            <p class="weather-note">Sample weather, not live conditions.</p>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; <span id="currentyear"></span> Parker Wright | Utah, USA</p>
         <p id="lastModified"></p>
     </footer>
 </body>
+
 </html>
