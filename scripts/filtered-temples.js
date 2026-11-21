@@ -81,7 +81,36 @@ const temples = [
             imageUrl:
                 "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/mexico-city-mexico/400x250/mexico-city-temple-exterior-1518361-wallpaper.jpg"
         },
-        // Add more temple objects here...
+
+        {
+            templeName: "St. George Utah",
+            location: "St. George, Utah, United States",
+            dedicated: "1877, April, 6",
+            area: 143969,
+            imageUrl: "ST_GEORGE_IMAGE_URL"
+        },
+        {
+            templeName: "Logan Utah",
+            location: "Logan, Utah, United States",
+            dedicated: "1884, May, 17",
+            area: 119619,
+            imageUrl: "LOGAN_IMAGE_URL"
+        },
+        {
+            templeName: "Provo City Center",
+            location: "Provo, Utah, United States",
+            dedicated: "2016, March, 20",
+            area: 85084,
+            imageUrl: "PROVO_IMAGE_URL"
+        },
+        {
+            templeName: "St. George Utah",
+            location: "St. George, Utah, United States",
+            dedicated: "1877, April, 6",
+            area: 143969,
+            imageUrl:
+                "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/st-george-utah/400x250/st-george-utah-temple-exterior-1075606-wallpaper.jpg"
+        },
     ];
 
 
