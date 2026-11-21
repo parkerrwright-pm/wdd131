@@ -111,7 +111,67 @@ const temples = [
             imageUrl:
                 "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/st-george-utah/400x250/st-george-utah-temple-exterior-1075606-wallpaper.jpg"
         },
-    ];
+];
+const cardContainer = document.querySelector("#temple-cards");
+const pageHeading = document.querySelector("main h1");
 
+function displayTemples(templeList) {
+    cardContainer.replaceChildren();
+
+    templeList.forEach((temple) => {
+        const card = document.createElement("section");
+        card.classList.add("temple-card");
+
+        const name = document.createElement("h2");
+        name.textContent = temple.templeName;
+
+        const location = document.createElement("p");
+        location.textContent = `Location: ${temple.location}`;
+
+        const dedicated = document.createElement("p");
+        dedicated.textContent = `Dedicated: ${temple.dedicated}`;
+
+        const area = document.createElement("p");
+        area.textContent = `Area: ${temple.area.toLocaleString()} sq ft`;
+
+        const image = document.createElement("img");
+        image.src = temple.imageUrl;
+        image.alt = `${temple.templeName} Temple`;
+        image.loading = "lazy";
+        image.width = 400;
+        image.height = 250;
+
+        card.append(name, location, dedicated, area, image);
+        cardContainer.appendChild(card);
+    });
+}
+
+displayTemples(temples);
+
+document.querySelectorAll("#menu a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const filter = link.dataset.filter;
+        let filteredTemples = temples;
+
+        if (filter === "old") {
+            filteredTemples = temples.filter(
+                (temple) => Number(temple.dedicated.slice(0, 4)) < 1900
+            );
+        } else if (filter === "new") {
+            filteredTemples = temples.filter(
+                (temple) => Number(temple.dedicated.slice(0, 4)) > 2000
+            );
+        } else if (filter === "large") {
+            filteredTemples = temples.filter((temple) => temple.area > 90000);
+        } else if (filter === "small") {
+            filteredTemples = temples.filter((temple) => temple.area < 10000);
+        }
+
+        pageHeading.textContent = link.textContent;
+        displayTemples(filteredTemples);
+    });
+});
 
 }
