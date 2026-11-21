@@ -17,10 +17,14 @@ if (menuButton && menu) {
         const isHidden = menu.classList.toggle("hidden");
         menuButton.textContent = isHidden ? "☰" : "X";
         menuButton.setAttribute("aria-expanded", String(!isHidden));
-        menuButton.setAttribute("aria-label", isHidden ? "Open navigation" : "Close navigation");
+        menuButton.setAttribute(
+            "aria-label",
+            isHidden ? "Open navigation" : "Close navigation"
+        );
     });
+}
 
-    const temples = [
+const temples = [
         {
             templeName: "Aba Nigeria",
             location: "Aba, Nigeria",
