@@ -15,7 +15,7 @@
         width: 100%;
     }
 
-    main {
+    #temple-cards {
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 }

@@ -145,6 +145,31 @@ img {
     margin: 0 auto;
 }
 
+#temple-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.temple-card {
+    min-width: 0;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.temple-card p {
+    margin: 0.4rem 0;
+}
+
+.temple-card img {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+
 figcaption {
     margin-top: 0.5rem;
     font-size: 0.85rem;
