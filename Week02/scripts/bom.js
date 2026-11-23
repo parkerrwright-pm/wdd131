@@ -25,6 +25,44 @@ const booksByNormalizedName = new Map(
     bookNames.map((book) => [book.toLowerCase(), book])
 );
 
+let chaptersArray = getChapterList() || [];
+
+chaptersArray.forEach(chapter => {
+    displayList(chapter);
+});
+
+chapterForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const chapter = parseChapter(chapterInput.value);
+
+    if (!chapter) {
+        showFeedback('Enter a Book of Mormon book and a positive chapter number, such as Alma 5.');
+        chapterInput.focus();
+        return;
+    }
+
+    if (chaptersArray.includes(chapter.label)) {
+        showFeedback(`${chapter.label} is already in your list.`);
+        chapterInput.focus();
+        return;
+    }
+
+    if (chaptersArray.length >= 10) {
+        showFeedback('Your Top 10 list is full. Remove a chapter before adding another.');
+        chapterInput.focus();
+        return;
+    }
+
+    displayList(chapter.label);
+    chaptersArray.push(chapter.label);
+    setChapterList();
+
+    showFeedback(`${chapter.label} added to your list. ${chaptersArray.length} of 10 chapters.`);
+    chapterInput.value = '';
+    chapterInput.focus();
+});
+
 function showFeedback(message) {
     feedback.textContent = message;
 }
@@ -91,6 +129,28 @@ chapterForm.addEventListener('submit', (event) => {
         chapterInput.focus();
     });
 
+    function displayList(item) {
+        const li = document.createElement('li');
+
+        const chapterName = document.createElement('span');
+        chapterName.textContent = item;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.className = 'delete';
+        deleteButton.textContent = '×';
+        deleteButton.setAttribute('aria-label', `Remove ${item}`);
+        deleteButton.addEventListener('click', () => {
+            li.remove();
+            deleteChapter(item);
+            showFeedback(`${item} removed from your list.`);
+            chapterInput.focus();
+        });
+
+        li.append(chapterName, deleteButton);
+        chapterList.append(li);
+    }
+
     item.append(chapterName, removeButton);
     chapterList.append(item);
 
@@ -98,3 +158,16 @@ chapterForm.addEventListener('submit', (event) => {
     chapterInput.value = '';
     chapterInput.focus();
 });
+
+function setChapterList() {
+    localStorage.setItem('myFavBOMList', JSON.stringify(chaptersArray));
+}
+
+function getChapterList() {
+    return JSON.parse(localStorage.getItem('myFavBOMList'));
+}
+
+function deleteChapter(chapter) {
+    chaptersArray = chaptersArray.filter(item => item !== chapter);
+    setChapterList();
+}

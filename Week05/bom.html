@@ -1,0 +1,43 @@
+<!-- This app allows users to enter their favorite Book of Mormon chapters and display them in a list that updates
+automatically on the screen. Entries can then be deleted from the list. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book of Mormon Chapters</title>
+    <link rel="stylesheet" href="styles/bom.css">
+</head>
+<body>
+    <header>
+        <h1>📖 Book of Mormon - Top 10</h1>
+    </header>
+    <main>
+        <section>
+            <form id="chapter-form">
+                <label for="favchap">Enter Book and Chapter:</label>
+                <p id="input-help" class="visually-hidden">For example: Alma 5 or 1 Nephi 3.</p>
+                <input
+                    type="text"
+                    id="favchap"
+                    name="chapter"
+                    placeholder="Alma 5"
+                    aria-describedby="input-help"
+                    autocomplete="off"
+                >
+                <button type="submit">Add Chapter</button>
+            </form>
+        </section>
+        <section>
+            <h2 class="visually-hidden">Your Favorite Chapters</h2>
+            <p id="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+            <ul id="list" aria-label="Favorite Book of Mormon chapters"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>Parker Wright</p>
+    </footer>
+    <script src="scripts/bom.js"></script>
+</body>
+</html>
