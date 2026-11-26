@@ -141,3 +141,13 @@ footer {
     color: white;
     text-align: center;
 }
+
+@media (min-width: 700px) {
+    body {
+        margin-top: 3rem;
+    }
+
+    form {
+        gap: 1rem;
+    }
+}
