@@ -1,0 +1,126 @@
+<!-- In this assignment, you will create a product review form page. You will apply good form design principles, meet specific field requirements, and include a submission confirmation with a counter. Additionally, the form must be user-friendly on both mobile and desktop screens.
+
+Mobile view screenshot example of product review form
+Product Review Form Example
+Task
+Build an HTML form with a confirmation page that meets the specified requirements. The design is your choice but must follow good form design principles. Here is an example screenshot of what you will build.
+
+Associated Course Learning Outcomes
+Develop responsive web pages that follow best practices and use valid HTML and CSS.
+Demonstrate proficiency with JavaScript language syntax.
+Use JavaScript to respond to events and dynamically modify HTML.
+Demonstrate the traits of an effective team member including clear communication, collaboration, fulfilling assignments, and meeting deadlines.
+
+HTML
+Include the standard HTML head and body components required in this class and include the common footer content used on assignments.
+The HTML form must have the following fields, attributes, and functionality:
+Form
+The form itself should use a method of "get" in order to be supported on GitHub.
+The action should reference a form confirmation page named "review.html".
+Product Name
+Use a select element with an appropriate id attribute, name attribute, and set it to be required.
+The first option in the select element is an instructional placeholder that says "Select a Product ..." and is disabled and selected so that it displays by default but cannot be clicked by the user.
+The remaining options are created dynamically using a provided product array.
+Each option must have a value attribute that is the product name.
+A product array of objects is provided below to help you understand how to build a select field with the dynamic options. Normally the data would come from an external source.
+
+Overall Rating
+The overall product rating should have five levels (1 to 5) or stars.
+The example form uses star entities ☆ (&star;) to display the level. You are free to employ a design of your choice. For example, here is another example of using stars that fill up on selection: Form Input Radio Star+ – CodePen.
+
+Use a input of type radio for each of the levels.
+The required attributes are an id, name (each of the radio buttons should have the same name value), and required
+Why should each of the radio buttons that are part of this rating have the same name value?
+
+Date of Installation
+Use a input of type date to allow the user to select the date the product was installed.
+The required attributes are an id, name, and required
+Useful Features
+This field allows the user to select all the listed features that they found useful.
+This is a check all that apply field.
+Use a input of type checkbox
+Each checkbox should have an id, name, and value attribute.
+Written Review
+Use a textarea element to allow the user to write a review.
+The required attributes are an id and name
+The written review is not required by the user.
+User Name
+Use a input of type text for the user to enter their name.
+Add the id and name attributes.
+The user name entry is optional.
+Form Submission Button
+Use a input of type submit with an appropriate value that indicates the form action purpose.
+Each form field must have an associated label.
+Check that the keyboard tab order is correct.
+Include the common footer content found on all assignments.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product Review Form">
+    <meta name="author" content="Parker Wright">
+    <link rel="stylesheet" href="styles/form.css">
+    <script src="scripts/form.js" defer></script>
+    <title>Product Review Form</title>
+</head>
+<body>
+    <form method="get" action="review.html">
+        <label for="product">Product Name:</label>
+        <select id="product" name="product" required>
+            <option value="" disabled selected>Select a Product ...</option>
+        </select>
+
+        <fieldset>
+            <legend>Overall Rating:</legend>
+            <div class="star-rating">
+            <input type="radio" name="stars" id="star-a" value="5" aria-label="5 stars" required/>
+            <label for="star-a"></label>
+
+            <input type="radio" name="stars" id="star-b" value="4" aria-label="4 stars" required/>
+            <label for="star-b"></label>
+
+            <input type="radio" name="stars" id="star-c" value="3" aria-label="3 stars" required/>
+            <label for="star-c"></label>
+
+            <input type="radio" name="stars" id="star-d" value="2" aria-label="2 stars" required/>
+            <label for="star-d"></label>
+
+            <input type="radio" name="stars" id="star-e" value="1" aria-label="1 star" required/>
+            <label for="star-e"></label>
+            </div>
+        </fieldset>
+
+
+        <label for="installation">Date of Installation:</label>
+        <input type="date" id="installation" name="installation" required>
+
+        <fieldset>
+            <legend>Useful Features:</legend>
+            <input type="checkbox" id="feature1" name="features" value="feature1">
+            <label for="feature1">Feature 1</label>
+            <input type="checkbox" id="feature2" name="features" value="feature2">
+            <label for="feature2">Feature 2</label>
+            <input type="checkbox" id="feature3" name="features" value="feature3">
+            <label for="feature3">Feature 3</label>
+            <input type="checkbox" id="feature4" name="features" value="feature4">
+            <label for="feature4">Feature 4</label>
+            <input type="checkbox" id="feature5" name="features" value="feature5">
+            <label for="feature5">Feature 5</label>
+        </fieldset>
+
+        <label for="review">Written Review: (optional)</label>
+        <textarea id="review" name="review"></textarea>
+
+        <label for="username">User Name: (optional)</label>
+        <input type="text" id="username" name="username">
+
+        <input type="submit" value="Submit Review">
+    </form>
+<footer>
+    &copy; 2024 &bull; Parker Wright &bull; 123-555-6789
+</footer>
+</body>
+</html>
