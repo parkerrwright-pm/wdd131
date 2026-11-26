@@ -1,10 +1,3 @@
-/*Use your own color scheme and typography choices. You are responsible for practicing good design principles of alignment,
-color contrast,
-proximity,
-repetition,
-and usability in all of your work. Apply good design principles by laying out the form according to the HTML forms learning activity guidelines. Create a visually appealing design that adheres to the design principles that support usability and provide a positive user experience.
-*/
-
 * {
     box-sizing: border-box;
 }
@@ -139,4 +132,12 @@ input[type="submit"] {
         font-size: 36px;
         line-height: 21px;
     }
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #290329;
+    color: white;
+    text-align: center;
 }
